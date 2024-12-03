@@ -38,4 +38,4 @@ train_score = 0.7772357723577237
 test_score = 0.7987012987012987 
 ```
 ## Random Forest
-Made first Model quick and dirty, no optimization or anything.
+Made first Model quick and dirty, no optimization or anything. 
