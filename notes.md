@@ -1,5 +1,9 @@
 # Machine-Learning I
 
+
+Notes:
+Try to visualise the tensor of score values of the grid search results of all models (if possible to get all the value of the grid search scores)
+
 ## Dataset
 Our dataset is about "Diabetes prediction". 
 It has 8 features and 1 label. 
