@@ -1,0 +1,8 @@
+# Ignore the pycache folders
+__pycache__/
+
+# Ignore the .vscode folder
+.vscode/
+
+# Ignore the Media folders
+media/
