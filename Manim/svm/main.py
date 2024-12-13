@@ -6,6 +6,6 @@ from animations.setup import setup
 class main(MovingCameraScene):
     def construct(self):
         intro(self)
-        #setup(self)
+        setup(self)
         svm2d(self)
 
