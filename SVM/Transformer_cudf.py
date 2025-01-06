@@ -1,5 +1,5 @@
-import pandas as pd
-import numpy as np
+import cudf
+import cupy as cp
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
@@ -11,9 +11,9 @@ class ReplaceZeroWithMean(BaseEstimator, TransformerMixin):
         # Compute the mean of non-zero values for each specified column
         self.means = {
             col: (
-                X.loc[X[col] != 0, col].mean()  # For DataFrame
-                if isinstance(X, pd.DataFrame)
-                else np.nanmean(np.where(X[:, col] != 0, X[:, col], np.nan))  # For NumPy array
+                X.loc[X[col] != 0, col].mean()  # For cuDF DataFrame
+                if isinstance(X, cudf.DataFrame)
+                else cp.nanmean(cp.where(X[:, col] != 0, X[:, col], cp.nan))  # For CuPy array
             )
             for col in self.columns
         }
@@ -23,11 +23,11 @@ class ReplaceZeroWithMean(BaseEstimator, TransformerMixin):
         X = X.copy()  # Make a copy to avoid modifying the original data
 
         for col in self.columns:
-            if isinstance(X, pd.DataFrame):
+            if isinstance(X, cudf.DataFrame):
                 # Ensure the mean value matches the column type to avoid dtype incompatibility
                 X.loc[X[col] == 0, col] = X[col].dtype.type(self.means[col])
             else:
-                # For NumPy arrays, use the dtype of the column (assumes the dtype is uniform for each column)
+                # For CuPy arrays, use the dtype of the column (assumes the dtype is uniform for each column)
                 X[X[:, col] == 0, col] = self.means[col]
 
         return X
