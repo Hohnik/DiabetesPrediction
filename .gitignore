@@ -8,3 +8,5 @@ __pycache__/
 # Ignore the Media folders
 media/
 .venv
+.ruff_cache
+uv.lock
