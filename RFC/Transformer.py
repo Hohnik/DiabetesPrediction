@@ -13,7 +13,9 @@ class ReplaceZeroWithMean(BaseEstimator, TransformerMixin):
             col: (
                 X.loc[X[col] != 0, col].mean()  # For DataFrame
                 if isinstance(X, pd.DataFrame)
-                else np.nanmean(np.where(X[:, col] != 0, X[:, col], np.nan))  # For NumPy array
+                else np.nanmean(
+                    np.where(X[:, col] != 0, X[:, col], np.nan)
+                )  # For NumPy array
             )
             for col in self.columns
         }
