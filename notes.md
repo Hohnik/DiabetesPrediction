@@ -1,5 +1,8 @@
 # Machine-Learning I
 
+## Code
+The main code is in the "RFC/rfc.ipynb" and "SVM/svm.ipynb".
+
 ## Dataset  
 Our dataset is about "Diabetes prediction". 
 It has 8 features and 1 label. 
